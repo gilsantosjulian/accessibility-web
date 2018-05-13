@@ -1,0 +1,71 @@
+<rdf:RDF
+	xmlns="http://www.semanticweb.org/juli/ontologies/2018/2/html-ontology#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+	xmlns:owl="http://www.w3.org/2002/07/owl#" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#" 
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+	xml:base="http://www.semanticweb.org/juli/ontologies/2018/2/html-ontology"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:element="https://www.w3schools.com/tags/">
+
+	<!--
+        ///////////////////////////////////////////////////////////////////////////////////////
+        //
+        // OWL Header 
+        //
+        ///////////////////////////////////////////////////////////////////////////////////////
+    -->
+	<owl:Ontology rdf:about="http://www.linkeddatatools.com/plants">
+		<dc:title>HTML Ontology</dc:title>
+		<dc:description>Ontología que define los elementos HTML como componentes Web</dc:description>
+	</owl:Ontology>
+
+    <!--
+        ///////////////////////////////////////////////////////////////////////////////////////
+        //
+        // Data properties
+        //
+        ///////////////////////////////////////////////////////////////////////////////////////
+    -->
+	<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/juli/ontologies/2018/2/html-ontology#id">
+		<rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/juli/ontologies/2018/2/html-ontology#general"/>
+	</owl:DatatypeProperty>
+
+	<!--
+		///////////////////////////////////////////////////////////////////////////////////////
+		//
+		// Classes
+		//
+		///////////////////////////////////////////////////////////////////////////////////////
+	-->
+	<owl:Class rdf:about="http://www.linkeddatatools.com/plants#planttype">
+		<rdfs:label>The plant type</rdfs:label>
+		<rdfs:comment>The class of plant types.</rdfs:comment>
+	</owl:Class>
+
+
+
+	<owl:Class rdf:about="https://www.w3schools.com/tags/tag_footer.asp">
+		<rdfs:label>Pie de página</rdfs:label>
+		<rdfs:comment>Define el pied de pagina de un documento o una sección</rdfs:comment>
+	</owl:Class>
+
+	<!--
+		///////////////////////////////////////////////////////////////////////////////////////
+		//
+		// Individuals
+		//
+		///////////////////////////////////////////////////////////////////////////////////////
+	-->
+
+	<owl:NamedIndividual rdf:about="http://www.semanticweb.org/juli/ontologies/2018/2/html-ontology#Header">
+		<role rdf:datatype="http://www.w3.org/2001/XMLSchema#string">banner</role>
+		<id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">header_id</id>
+	</owl:NamedIndividual>
+
+	<owl:NamedIndividual rdf:about="http://www.semanticweb.org/juli/ontologies/2018/2/html-ontology#Footer">
+		<role rdf:datatype="http://www.w3.org/2001/XMLSchema#string">contentinfo</role>
+		<id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">footer_id</id>
+	</owl:NamedIndividual>
+
+</rdf:RDF>
