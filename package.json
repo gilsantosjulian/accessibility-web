@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "fs": "0.0.1-security",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-scripts": "1.1.4",
-    "react-xml-parser": "^1.0.5"
+    "react-xml-parser": "^1.0.5",
+    "xml2js": "^0.4.19"
   },
   "scripts": {
     "start": "webpack-dev-server --watch-poll --open --mode development",
