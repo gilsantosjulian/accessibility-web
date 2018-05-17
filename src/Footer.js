@@ -6,7 +6,10 @@ var XMLParser = require('react-xml-parser');
 //import fs from 'fs';
 import xml2js from 'xml2js';
 
+//var ontology = require('./ontology.xml');
+
 export default class Footer extends Component {
+	
 	render() {
 
 		var xmlText = `
@@ -83,8 +86,12 @@ export default class Footer extends Component {
 				<id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">navigation_id</id>
 			</owl:NamedIndividual>
 		</rdf:RDF>
-    
-    `
+	`
+	
+	// var xmlText = new XMLSerializer().serializeToString(ontology);
+
+	// console.log('xmlText')
+	// console.log(xmlText)
 
 		// var parser = new xml2js.Parser();
 		// fs.readFile(__dirname + './ontology.xml', 'utf8', function (err, data) {

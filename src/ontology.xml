@@ -13,7 +13,7 @@
         //
         ///////////////////////////////////////////////////////////////////////////////////////
     -->
-	<owl:Ontology rdf:about="http://www.linkeddatatools.com/plants">
+	<owl:Ontology rdf:about="http://www.semanticweb.org/juli/ontologies/2018/2/html-ontology">
 		<dc:title>HTML Ontology</dc:title>
 		<dc:description>Ontología que define los elementos HTML como componentes Web</dc:description>
 	</owl:Ontology>
@@ -43,6 +43,7 @@
 		<rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/juli/ontologies/2018/2/html-ontology#roles"></rdfs:subPropertyOf>
 		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"></rdfs:range>
 	</owl:DatatypeProperty>
+
 	<!--
 		///////////////////////////////////////////////////////////////////////////////////////
 		//
@@ -72,15 +73,25 @@
 		<rdfs:comment>Define el pie de página de un documento o una sección</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="http://www.semanticweb.org/juli/ontologies/2018/2/html-ontology#element"></rdfs:subClassOf>
 	</owl:Class>
-	<owl:Class rdf:about="http://www.semanticweb.org/juli/ontologies/2018/2/html-ontology#Nav">
+	<owl:Class rdf:about="https://www.w3schools.com/tags/tag_nav.asp">
 		<rdfs:label>Barra de navegación</rdfs:label>
 		<rdfs:comment>Define el conjunto de enlaces de navegación</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="http://www.semanticweb.org/juli/ontologies/2018/2/html-ontology#element"></rdfs:subClassOf>
 	</owl:Class>
-	<owl:Class rdf:about="http://www.semanticweb.org/juli/ontologies/2018/2/html-ontology#Li">
-	<rdfs:label>Define un ítem de lista</rdfs:label>
-		<rdfs:comment>Define el conjunto de enlaces de navegación</rdfs:comment>
+	<owl:Class rdf:about="https://www.w3schools.com/tags/tag_ul.asp">
+		<rdfs:label>Lista desordenada</rdfs:label>
+		<rdfs:comment>Define una lista desordenada con viñetas</rdfs:comment>
 		<rdfs:subClassOf rdf:resource="http://www.semanticweb.org/juli/ontologies/2018/2/html-ontology#Nav"></rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="https://www.w3schools.com/tags/tag_ol.asp	">
+		<rdfs:label>Lista ordenada</rdfs:label>
+		<rdfs:comment>Define una lista ordenada. Puede ser numérica o alfabética</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="http://www.semanticweb.org/juli/ontologies/2018/2/html-ontology#Nav"></rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="https://www.w3schools.com/tags/tag_li.asp">
+		<rdfs:label>Define un ítem de lista</rdfs:label>
+		<rdfs:comment>Define el conjunto de enlaces de navegación</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="http://www.semanticweb.org/juli/ontologies/2018/2/html-ontology#Ul"></rdfs:subClassOf>
 	</owl:Class>
 	<!--
 		///////////////////////////////////////////////////////////////////////////////////////
@@ -104,5 +115,20 @@
 	<owl:NamedIndividual rdf:about="http://www.semanticweb.org/juli/ontologies/2018/2/html-ontology#Nav">
 		<role rdf:datatype="http://www.w3.org/2001/XMLSchema#string">navigation</role>
 		<id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">navigation_id</id>
+	</owl:NamedIndividual>
+	<owl:NamedIndividual rdf:about="http://www.semanticweb.org/juli/ontologies/2018/2/html-ontology#Ul">
+		<role rdf:datatype="http://www.w3.org/2001/XMLSchema#string">menubar</role>
+		<id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ul_id</id>
+	</owl:NamedIndividual>
+	<owl:NamedIndividual rdf:about="http://www.semanticweb.org/juli/ontologies/2018/2/html-ontology#Ul">
+		<role rdf:datatype="http://www.w3.org/2001/XMLSchema#string">menubar</role>
+		<aria-expanded rdf:datatype="http://www.w3.org/2001/XMLSchema#string">true</aria-expanded>
+		<id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ul_id</id>
+	</owl:NamedIndividual>
+	<owl:NamedIndividual rdf:about="http://www.semanticweb.org/juli/ontologies/2018/2/html-ontology#Li">
+		<role rdf:datatype="http://www.w3.org/2001/XMLSchema#string">menuItem</role>
+		<aria-haspopup rdf:datatype="http://www.w3.org/2001/XMLSchema#string">false</aria-haspopup>
+		<aria-hidden rdf:datatype="http://www.w3.org/2001/XMLSchema#string">false</aria-hidden>
+		<id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">li_id</id>
 	</owl:NamedIndividual>
 </rdf:RDF>
