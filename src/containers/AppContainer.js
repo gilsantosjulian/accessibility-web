@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import AppComponent from '../App';
+import AppComponent from '../components/app/App';
 import { fetchOntology } from '../actions/OntologyActions';
 
 const mapStateToProps = (state) => {
