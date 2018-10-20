@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchMetadata } from '../../actions/OntologyActions';
-import { isEmpty } from '../../functions/isEmpty';
+import { fetchMetadata } from '../../../actions/OntologyActions';
+import { isEmpty } from '../../../functions/isEmpty';
 
 class Footer extends Component {
 
-	constructor(isRoot = false, checked = false) {
+	constructor() {
 		super();
 		this.state = {
 			id: '',

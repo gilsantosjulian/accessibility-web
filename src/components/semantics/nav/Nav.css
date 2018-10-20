@@ -1,0 +1,22 @@
+.nav {
+  height: 50px;
+  background-color: #2bbfba;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.nav a {
+  display: inline-block;
+  font-size: 2rem;
+  text-transform: none;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+
+nav form {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 2em;
+}
