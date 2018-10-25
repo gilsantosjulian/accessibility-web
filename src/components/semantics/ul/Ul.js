@@ -10,6 +10,7 @@ class Ul extends Component {
         super();
         this.state = {
             id: '',
+            class: '',
             role: '',
             aria_expanded: '',
             aria_hidden: '',
@@ -25,10 +26,12 @@ class Ul extends Component {
     componentWillReceiveProps(nextProps) {
         if (nextProps.ul) {
             this.setState({
-                id: `${nextProps.ul.id[0]['_']}_id`,
-                role: nextProps.ul.role[0]['_'],
-                aria_expanded: nextProps.ul.aria_expanded[0]['_'],
-                aria_hidden: nextProps.ul.aria_hidden[0]['_'],
+                id: `${nextProps.ul["elements:id"]}`,
+                class: `${nextProps.ul["elements:class"]}`,
+                role: nextProps.ul["elements:role"],
+                ariaLabel: nextProps.ul["aria-label"],
+                aria_expanded: nextProps.ul["elements:aria-expanded"][0]['_'],
+                aria_hidden: nextProps.ul["elements:aria-hidden"][0]['_'],
             });
         }
     }
@@ -36,13 +39,15 @@ class Ul extends Component {
     render() {
         return (
             <ul
-                className="ul"
+                className={this.state.class}
                 id={this.state.id}
-                role={this.state.role}
+                // role={this.state.role}
                 aria-expanded={this.state.aria_expanded}
                 aria-hidden={this.state.aria_hidden}
+                aria-label={this.state.ariaLabel}
+                tabIndex={this.props.tabIndex}
             >
-            {this.props.children}
+                {this.props.children}
             </ul>
         );
     }

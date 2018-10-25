@@ -12,12 +12,13 @@ export function ontologyReducer(state = initialState, action) {
     case FETCH_ONTOLOGY:
       return Object.assign({}, {}, { ontology: action.payload });
     case GET_METADATA:
-      let footer_metadata = state.ontology['rdf:RDF']['rdf:Description'].find((item) =>
-        item.id[0]['_'] == action.payload
-          ? item.id[0]
+      let metadata = state.ontology['rdf:RDF']['owl:NamedIndividual'].find((item) => 
+        item['elements:id'][0] == action.payload
+          ? item
           : null
       );
-      return Object.assign({}, state, { [action.payload]: footer_metadata });
+    
+      return Object.assign({}, state, { [action.payload]: metadata });
     default:
       return state;
   }

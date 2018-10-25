@@ -10,7 +10,9 @@ class Nav extends Component {
         super();
         this.state = {
             id: '',
+            class: '',
             role: '',
+            aria_label: '',
         };
     }
 
@@ -23,8 +25,10 @@ class Nav extends Component {
     componentWillReceiveProps(nextProps) {
         if (nextProps.nav) {
             this.setState({
-                id: `${nextProps.nav.id[0]['_']}_id`,
-                role: nextProps.nav.role[0]['_'],
+                id: `${nextProps.nav["elements:id"]}`,
+                class: `${nextProps.nav["elements:class"]}`,
+                aria_label: nextProps.nav["aria-label"],
+                role: nextProps.nav["elements:role"],
             });
         }
     }
@@ -32,11 +36,13 @@ class Nav extends Component {
     render() {
         return (
             <nav
-                className="nav"
+                className={this.state.class}
                 id={this.state.id}
                 role={this.state.role}
+                aria-label={this.state.aria_label}
+                tabIndex={this.props.tabIndex}
             >
-            {this.props.children}
+                {this.props.children}
             </nav>
         );
     }

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './Form.css';
+import './Aside.css';
 import { fetchMetadata } from '../../../actions/OntologyActions';
 import { isEmpty } from '../../../functions/isEmpty';
 
-class Form extends Component {
+class Aside extends Component {
 
     constructor() {
         super();
@@ -12,44 +12,42 @@ class Form extends Component {
             id: '',
             class: '',
             role: '',
-            aria_labelledby: '',
         };
     }
 
     componentWillUpdate(nextProps, nextState) {
         !isEmpty(nextProps.ontology)
-            ? this.props.fetchMetadata('form')
+            ? this.props.fetchMetadata('aside')
             : null;
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.form) {
+        if (nextProps.aside) {
             this.setState({
-                id: `${nextProps.form["elements:id"]}`,
-                class: `${nextProps.form["elements:class"]}`,
-                role: nextProps.form["elements:role"],
-                aria_labelledby: nextProps.form["elements:aria-labelledby"],
+                id: `${nextProps.aside["elements:id"]}`,
+                class: `${nextProps.aside["elements:class"]}`,
+                role: nextProps.aside["elements:role"],
             });
         }
     }
 
     render() {
         return (
-            <form
+            <aside
                 className={this.state.class}
                 id={this.state.id}
                 role={this.state.role}
-                aria-labelledby=""
+                tabIndex={this.props.tabIndex}
             >
                 {this.props.children}
-            </form>
+            </aside>
         );
     }
 }
 
 const mapStateToProps = state => ({
     ontology: state.ontologyReducer.ontology,
-    form: state.ontologyReducer.form,
+    aside: state.ontologyReducer.aside,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -59,4 +57,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps,
-)(Form);
+)(Aside);

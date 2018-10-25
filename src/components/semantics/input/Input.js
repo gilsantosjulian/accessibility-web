@@ -10,6 +10,11 @@ class Input extends Component {
         super();
         this.state = {
             id: '',
+            class: '',
+            placeholder: '',
+            type: '',
+            name: '',
+            value: '',
         };
     }
 
@@ -22,20 +27,32 @@ class Input extends Component {
     componentWillReceiveProps(nextProps) {
         if (nextProps.input) {
             this.setState({
-                id: `${nextProps.input.id[0]['_']}_id`,
+                id: `${nextProps.input["elements:id"]}`,
+                class: `${nextProps.input["elements:class"]}`,
+                placeholder: nextProps.input["placeholder"],
+                type: nextProps.input["elements:type"],
+                name: nextProps.input["elements:nameElement"],
+                value: ''
             });
         }
+    }
+
+    onChange (event) {
+        this.setState({
+            value: event.target.value
+        });
     }
 
     render() {
         return (
             <input
-                className="input"
+                className={this.state.class}
                 id={this.state.id}
-                type={this.props.type}
-                name={this.props.name}
-                placeholder={this.props.placeholder}
-                value={this.props.value}
+                type={this.state.type}
+                name={this.state.name}
+                placeholder={this.state.placeholder}
+                value={this.state.value}
+                onChange={(event) => this.onChange(event)}
             >
             </input>
         );

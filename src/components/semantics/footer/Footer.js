@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import './Footer.css';
 import { fetchMetadata } from '../../../actions/OntologyActions';
 import { isEmpty } from '../../../functions/isEmpty';
 
@@ -9,6 +10,7 @@ class Footer extends Component {
 		super();
 		this.state = {
 			id: '',
+			class: '',
 			role: '',
 		};
 	}
@@ -22,8 +24,9 @@ class Footer extends Component {
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.footer) {
 			this.setState({
-				id: `${nextProps.footer.id[0]['_']}_id`,
-				role: nextProps.footer.role[0]['_'],
+				id: `${nextProps.footer["elements:id"]}`,
+				class: `${nextProps.footer["elements:class"]}`,
+				role: nextProps.footer["elements:role"],
 			});
 		}
 	}
@@ -31,14 +34,12 @@ class Footer extends Component {
 	render() {
 		return (
 			<footer
-				className="Footer"
+				className={this.state.class}
 				id={this.state.id}
 				role={this.state.role}
+				tabIndex={this.props.tabIndex}
 			>
-				<p>
-					This is a footer.
-
-        		</p>
+				{this.props.children}
 			</footer>
 		);
 	}

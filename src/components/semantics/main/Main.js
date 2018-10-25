@@ -10,6 +10,7 @@ class Main extends Component {
         super();
         this.state = {
             id: '',
+            class: '',
             role: '',
         };
     }
@@ -23,8 +24,9 @@ class Main extends Component {
     componentWillReceiveProps(nextProps) {
         if (nextProps.main) {
             this.setState({
-                id: `${nextProps.main.id[0]['_']}_id`,
-                role: nextProps.main.role[0]['_'],
+                id: `${nextProps.main["elements:id"]}`,
+                class: `${nextProps.main["elements:class"]}`,
+                role: nextProps.main["elements:role"],
             });
         }
     }
@@ -32,11 +34,11 @@ class Main extends Component {
     render() {
         return (
             <main
-                className="main"
+                className={this.state.class}
                 id={this.state.id}
                 role={this.state.role}
             >
-            {this.props.children}
+                {this.props.children}
             </main>
         );
     }

@@ -10,6 +10,7 @@ class A extends Component {
         super();
         this.state = {
             id: '',
+            class: '',
             rel: '',
         };
     }
@@ -23,8 +24,9 @@ class A extends Component {
     componentWillReceiveProps(nextProps) {
         if (nextProps.a) {
             this.setState({
-                id: `${nextProps.a.id[0]['_']}_id`,
-                rel: nextProps.a.rel[0]['_'],
+                id: nextProps.a["elements:id"],
+                class: nextProps.a["elements:class"],
+                rel: nextProps.a["elements:rel"],
             });
         }
     }
@@ -32,13 +34,17 @@ class A extends Component {
     render() {
         return (
             <a
-                className="a"
+                className={this.state.class}
                 id={this.state.id}
+                key={`${this.state.id}_${this.props.title}`}
                 role={this.props.role}
                 rel={this.state.rel}
                 href={this.props.href}
+                title={this.props.title}
+                tabIndex={this.props.tabIndex}
             >
-                {this.props.title}
+                {this.props.text}
+                {this.props.children}
             </a>
         );
     }

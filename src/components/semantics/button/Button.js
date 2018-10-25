@@ -1,55 +1,57 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './Form.css';
+import './Button.css';
 import { fetchMetadata } from '../../../actions/OntologyActions';
 import { isEmpty } from '../../../functions/isEmpty';
 
-class Form extends Component {
+class Button extends Component {
 
     constructor() {
         super();
         this.state = {
             id: '',
             class: '',
-            role: '',
-            aria_labelledby: '',
+            placeholder: '',
+            type: '',
+            aria_describedby: '',
         };
     }
 
     componentWillUpdate(nextProps, nextState) {
         !isEmpty(nextProps.ontology)
-            ? this.props.fetchMetadata('form')
+            ? this.props.fetchMetadata('button')
             : null;
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.form) {
+        if (nextProps.button) {
             this.setState({
-                id: `${nextProps.form["elements:id"]}`,
-                class: `${nextProps.form["elements:class"]}`,
-                role: nextProps.form["elements:role"],
-                aria_labelledby: nextProps.form["elements:aria-labelledby"],
+                id: `${nextProps.button["elements:id"]}`,
+                class: `${nextProps.button["elements:class"]}`,
+                placeholder: nextProps.button["elements:placeholder"],
+                type: nextProps.button["elements:type"],
+                aria_describedby: nextProps.button["aria-describedby"],
             });
         }
     }
 
     render() {
         return (
-            <form
+            <input
                 className={this.state.class}
                 id={this.state.id}
-                role={this.state.role}
-                aria-labelledby=""
+                type={this.state.type}
+                aria_describedby={this.state.aria_describedby}
+                value={this.props.value}
             >
-                {this.props.children}
-            </form>
+            </input>
         );
     }
 }
 
 const mapStateToProps = state => ({
     ontology: state.ontologyReducer.ontology,
-    form: state.ontologyReducer.form,
+    button: state.ontologyReducer.button,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -59,4 +61,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps,
-)(Form);
+)(Button);

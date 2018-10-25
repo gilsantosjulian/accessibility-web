@@ -1,7 +1,12 @@
-/* .a {
-  display: inline-block;
-  font-size: 2rem;
-  text-transform: none;
+.a {
+  color: #1293c2 !important;
+}
+
+.a:visited {
   text-decoration: none;
-  color: rgb(255, 255, 255);
-} */
+}
+
+a.underlined
+{
+   text-decoration:underline;
+}

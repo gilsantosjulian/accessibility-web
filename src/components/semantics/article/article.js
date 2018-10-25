@@ -1,55 +1,52 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './Form.css';
+import './Article.css';
 import { fetchMetadata } from '../../../actions/OntologyActions';
 import { isEmpty } from '../../../functions/isEmpty';
 
-class Form extends Component {
+class Article extends Component {
 
     constructor() {
         super();
         this.state = {
             id: '',
-            class: '',
             role: '',
-            aria_labelledby: '',
         };
     }
 
     componentWillUpdate(nextProps, nextState) {
         !isEmpty(nextProps.ontology)
-            ? this.props.fetchMetadata('form')
+            ? this.props.fetchMetadata('article')
             : null;
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.form) {
+        if (nextProps.article) {
             this.setState({
-                id: `${nextProps.form["elements:id"]}`,
-                class: `${nextProps.form["elements:class"]}`,
-                role: nextProps.form["elements:role"],
-                aria_labelledby: nextProps.form["elements:aria-labelledby"],
+                id: `${nextProps.article["elements:id"]}`,
+                class: `${nextProps.article["elements:class"]}`,
+                role: nextProps.article["elements:role"],
             });
         }
     }
 
     render() {
         return (
-            <form
+            <article
                 className={this.state.class}
                 id={this.state.id}
                 role={this.state.role}
-                aria-labelledby=""
+                tabIndex={this.props.tabIndex}
             >
                 {this.props.children}
-            </form>
+            </article>
         );
     }
 }
 
 const mapStateToProps = state => ({
     ontology: state.ontologyReducer.ontology,
-    form: state.ontologyReducer.form,
+    article: state.ontologyReducer.article,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -59,4 +56,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps,
-)(Form);
+)(Article);

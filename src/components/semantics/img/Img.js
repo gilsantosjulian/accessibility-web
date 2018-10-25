@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './Form.css';
+import './Img.css';
 import { fetchMetadata } from '../../../actions/OntologyActions';
 import { isEmpty } from '../../../functions/isEmpty';
 
-class Form extends Component {
+class Img extends Component {
 
     constructor() {
         super();
@@ -12,44 +12,41 @@ class Form extends Component {
             id: '',
             class: '',
             role: '',
-            aria_labelledby: '',
+            aria_haspopup: '',
+            aria_hidden: '',
         };
     }
 
-    componentWillUpdate(nextProps, nextState) {
-        !isEmpty(nextProps.ontology)
-            ? this.props.fetchMetadata('form')
-            : null;
-    }
-
     componentWillReceiveProps(nextProps) {
-        if (nextProps.form) {
+        if (nextProps.img) {
             this.setState({
-                id: `${nextProps.form["elements:id"]}`,
-                class: `${nextProps.form["elements:class"]}`,
-                role: nextProps.form["elements:role"],
-                aria_labelledby: nextProps.form["elements:aria-labelledby"],
+                id: `${nextProps.img["elements:id"]}`,
+                class: `${nextProps.img["elements:class"]}`,
+                role: nextProps.img["elements:role"],
             });
         }
     }
 
     render() {
+        !isEmpty(this.props.ontology)
+            ? this.props.fetchMetadata('img')
+            : null;
         return (
-            <form
+            <img
                 className={this.state.class}
                 id={this.state.id}
                 role={this.state.role}
-                aria-labelledby=""
+                alt={this.props.alt}
+                src={this.props.src}
             >
-                {this.props.children}
-            </form>
+            </img>
         );
     }
 }
 
 const mapStateToProps = state => ({
     ontology: state.ontologyReducer.ontology,
-    form: state.ontologyReducer.form,
+    img: state.ontologyReducer.img,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -59,4 +56,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps,
-)(Form);
+)(Img);

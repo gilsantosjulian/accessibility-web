@@ -1,6 +1,6 @@
 .nav {
-  height: 50px;
-  background-color: #2bbfba;
+  height: auto;
+  background-color: #3aafa9;
   display: flex;
   margin-bottom: 10px;
 }
@@ -10,7 +10,7 @@
   font-size: 2rem;
   text-transform: none;
   text-decoration: none;
-  color: rgb(255, 255, 255);
+  color: #def2f1 !important;
 }
 
 nav form {

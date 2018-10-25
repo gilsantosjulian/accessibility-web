@@ -10,6 +10,7 @@ class Header extends Component {
         super();
         this.state = {
             id: '',
+            class: '',
             role: '',
         };
     }
@@ -23,8 +24,9 @@ class Header extends Component {
     componentWillReceiveProps(nextProps) {
         if (nextProps.header) {
             this.setState({
-                id: `${nextProps.header.id[0]['_']}_id`,
-                role: nextProps.header.role[0]['_'],
+                id: `${nextProps.header["elements:id"]}`,
+                class: `${nextProps.header["elements:class"]}`,
+                role: nextProps.header["elements:role"],
             });
         }
     }
@@ -32,11 +34,12 @@ class Header extends Component {
     render() {
         return (
             <header
-                className="header"
+                className={this.state.class}
                 id={this.state.id}
                 role={this.state.role}
+                tabIndex={this.props.tabIndex}
             >
-                <h1>Encabezado</h1>
+                {this.props.children}
             </header>
         );
     }
