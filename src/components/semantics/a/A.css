@@ -1,0 +1,12 @@
+.a {
+  color: #1293c2 !important;
+}
+
+.a:visited {
+  text-decoration: none;
+}
+
+a.underlined
+{
+   text-decoration:underline;
+}

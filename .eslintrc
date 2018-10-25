@@ -1,0 +1,24 @@
+{
+    "rules": {
+        "semi": ["error", "always"],
+        "jsx-a11y/label-has-associated-control": [
+            2,
+            {
+                "components": [
+                    "Label"
+                ],
+                "required": {
+                    "every": [
+                        "nesting",
+                        "id"
+                    ]
+                },
+                "allowChildren": false
+                }
+            ],
+        "jsx-a11y/label-has-for": "off"
+    },
+    "plugins": ["jsx-a11y"],
+    "parser": "babel-eslint",
+    "extends": ["plugin:jsx-a11y/recommended"]
+}

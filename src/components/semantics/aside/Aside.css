@@ -1,0 +1,36 @@
+.aside {
+  flex: 1.8;
+  padding: 0 1%;
+  background-color: #3aafa9;
+}
+
+.aside ul {
+  display: list-item;
+  padding: 0 10%;
+}
+
+.aside li {
+  padding-bottom: 10px;
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
+
+.aside a {
+  color: #def2f1 !important;
+}
+
+.aside a:visited {
+  color: #def2f1 !important;
+  text-decoration: none;
+}
+
+a.underlined
+{
+   text-decoration:underline;
+}
+
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+}
