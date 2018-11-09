@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import logo from './logo.svg';
 import './App.css';
 
 import DocumentTitle from 'react-document-title';
@@ -47,7 +46,9 @@ var alternative_text = `
                   62% con discapacidad moderada
 									58% sin discapacidad
 								Fuente: The Wide range of habilities and its impact on computer Technology Forrester Research. 2003
-                `;
+								`;
+
+var alternative_text_2 = `Gráfico que relaciona diferentes usos de la tecnologia accesibe con el porcentaje de personas con discapacidad severa, moderada y sin discapacidad`;
 
 class App extends Component {
 
@@ -64,25 +65,21 @@ class App extends Component {
 							<h1>Accesibilidad Web para todos</h1>
 						</div>
 					</Header>
-					{/* https://www.w3.org/TR/wai-aria-practices/examples/menubar/menubar-1/menubar-1.html */}
 					<Nav>
-						<Ul>
-							<Li><A href='' rel='tab' text='Inicio' /></Li>
-							<Li><A href='' rel='tab' text='Nuestro Equipo' /></Li>
-							<Li><A href='' rel='tab' text='Servicios' /></Li>
-							<Li><A href='' rel='tab' text='Contacto' /></Li>
+						<Ul ind='main_menu'>
+							<Li><A ind='tab_1' href='' rel='tab' text='Inicio' /></Li>
+							<Li><A ind='tab_2' href='' rel='tab' text='Nuestro Equipo' /></Li>
+							<Li><A ind='tab_3' href='' rel='tab' text='Servicios' /></Li>
+							<Li><A ind='tab_4' href='' rel='tab' text='Contacto' /></Li>
 						</Ul>
 						<Form>
-							<label htmlFor="input" aria-hidden='false' style={{ display: 'none' }}>Digíta tu texto</label>
 							<Input />
-
-							<label htmlFor="button" aria-hidden='true' style={{ display: 'none' }}>Botón para buscar</label>
 							<Button value="Buscar" />
 						</Form>
 					</Nav>
 
 					<Main>
-						<Article>
+						<Article ind='one'>
 							<section>
 								<h2 style={{ textAlign: 'left' }}>Introducción </h2>
 								<p>
@@ -95,27 +92,28 @@ class App extends Component {
                   desarrollo de software. Por tal motivo, éste modelo hace posible llevar y mostrar
                   de manera amigable una nueva forma de integrar accesibilidad con herramientas moderdas de
                   desarrollo y Web semántica.
-              </p>
+              	</p>
 								<h3>Personas con discapacidad visual</h3>
 								<p>
 									En Colombia, de las 41.242.948 personas descritas en el último censo, el 6.4% tienen alguna
                   discapacidad y el 2.77% tienen limitación para ver, en donde de este porcentaje solamente el
                   10% domina el sistema Braille y lamentablemente en jóvenes menores de 26 años, esta aproximación
                   baja el 5% (DANE, 2006). He aquí un problema de acceso a la información para personas ciegas.
-              </p>
+              	</p>
 							</section>
 						</Article>
-						<Article>
+						<Article ind='two'>
 							<section style={{ textAlign: 'center' }}>
 								<h2>Razones de uso de la tecnología accesible</h2>
 								<A
 									href=''
+									ind='enlace_img'
 									rel='link'
 									title='Razones de uso de la tecnología accesible'
 								>
 									<Img
 										src={img}
-										alt={alternative_text}
+										alt={alternative_text_2}
 										refresh={this.props.ontology}
 									/>
 									{/* <p style={{ margin: 0, paddingRight: 10, textAlign: 'right' }}>
@@ -126,7 +124,7 @@ class App extends Component {
 								<div>
 									<p style={{ textAlign: 'center', marginBottom: 0, }}>
 										<strong>
-											"El poder de la Web esta en su universalidad. Acceso por todos, independientemente
+											"El poder de la Web esta en su universalidad. Acceso para todos, independientemente
                       de la discapacidad, es un aspecto esencial."
                     </strong>
 									</p>
@@ -138,13 +136,13 @@ class App extends Component {
 							</section>
 						</Article>
 						<Aside>
-							<h3 style={{ textAlign: 'center' }}>Temas Relacionados</h3>
-							<Ul>
-								<Li><A href='' rel='tab' text='La W3C y sus estándares' /></Li>
-								<Li><A href='' rel='tab' text='Norma Técnica Colombiana (NTC)' /></Li>
-								<Li><A href='' rel='tab' text='Herramientas de desarrollo Web accesibles' /></Li>
-								<Li><A href='' rel='tab' text='NVDA Screen Reader' /></Li>
-								<Li><A href='' rel='tab' text='Etiquetas HTML semánticas' /></Li>
+							<h3 style={{ textAlign: 'center', color: '#ffffff' }}>Temas Relacionados</h3>
+							<Ul ind='aside'>
+								<Li><A ind='enlace_1' href='' rel='tab' text='La W3C y sus estándares' /></Li>
+								<Li><A ind='enlace_2' href='' rel='tab' text='Norma Técnica Colombiana (NTC)' /></Li>
+								<Li><A ind='enlace_3' href='' rel='tab' text='Herramientas de desarrollo Web accesibles' /></Li>
+								<Li><A ind='enlace_4' href='' rel='tab' text='NVDA Screen Reader' /></Li>
+								<Li><A ind='enlace_5' href='' rel='tab' text='Etiquetas HTML semánticas' /></Li>
 							</Ul>
 						</Aside>
 					</Main>

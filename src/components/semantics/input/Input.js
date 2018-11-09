@@ -27,8 +27,8 @@ class Input extends Component {
     componentWillReceiveProps(nextProps) {
         if (nextProps.input) {
             this.setState({
-                id: `${nextProps.input["elements:id"]}`,
-                class: `${nextProps.input["elements:class"]}`,
+                id: nextProps.input["elements:id"],
+                class: nextProps.input["elements:class"],
                 placeholder: nextProps.input["placeholder"],
                 type: nextProps.input["elements:type"],
                 name: nextProps.input["elements:nameElement"],
@@ -37,7 +37,7 @@ class Input extends Component {
         }
     }
 
-    onChange (event) {
+    onChange(event) {
         this.setState({
             value: event.target.value
         });
@@ -45,16 +45,18 @@ class Input extends Component {
 
     render() {
         return (
-            <input
-                className={this.state.class}
-                id={this.state.id}
-                type={this.state.type}
-                name={this.state.name}
-                placeholder={this.state.placeholder}
-                value={this.state.value}
-                onChange={(event) => this.onChange(event)}
-            >
-            </input>
+            <React.Fragment>
+                <label htmlFor='input' className='hidden' aria-hidden='false' >Digíta tu texto</label>
+                <input
+                    className={this.state.class}
+                    id={this.state.id}
+                    type={this.state.type}
+                    name={this.state.name}
+                    placeholder={this.state.placeholder}
+                    value={this.state.value}
+                    onChange={(event) => this.onChange(event)}
+                />
+            </React.Fragment>
         );
     }
 }

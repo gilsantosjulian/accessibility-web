@@ -25,8 +25,8 @@ class Nav extends Component {
     componentWillReceiveProps(nextProps) {
         if (nextProps.nav) {
             this.setState({
-                id: `${nextProps.nav["elements:id"]}`,
-                class: `${nextProps.nav["elements:class"]}`,
+                id: nextProps.nav["elements:id"],
+                class: nextProps.nav["elements:class"],
                 aria_label: nextProps.nav["aria-label"],
                 role: nextProps.nav["elements:role"],
             });
@@ -38,7 +38,7 @@ class Nav extends Component {
             <nav
                 className={this.state.class}
                 id={this.state.id}
-                role={this.state.role}
+                // role={this.state.role}
                 aria-label={this.state.aria_label}
                 tabIndex={this.props.tabIndex}
             >

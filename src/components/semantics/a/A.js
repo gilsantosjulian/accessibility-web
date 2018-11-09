@@ -35,8 +35,8 @@ class A extends Component {
         return (
             <a
                 className={this.state.class}
-                id={this.state.id}
-                key={`${this.state.id}_${this.props.title}`}
+                id={`${this.state.id}_${this.props.ind}`}
+                key={`${this.state.id}_${this.props.ind}`}
                 role={this.props.role}
                 rel={this.state.rel}
                 href={this.props.href}

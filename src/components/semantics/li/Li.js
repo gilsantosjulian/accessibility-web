@@ -26,8 +26,8 @@ class Li extends Component {
     componentWillReceiveProps(nextProps) {
         if (nextProps.li) {
             this.setState({
-                id: `${nextProps.li["elements:id"]}`,
-                class: `${nextProps.li["elements:class"]}`,
+                id: nextProps.li["elements:id"],
+                class: nextProps.li["elements:class"],
                 role: nextProps.li["elements:role"],
                 aria_haspopup: nextProps.li["elements:aria-haspopup"][0]['_'],
                 aria_hidden: nextProps.li["elements:aria-hidden"][0]['_'],
@@ -39,7 +39,8 @@ class Li extends Component {
         return (
             <li
                 className={this.state.class}
-                id={this.state.id}
+                id={`${this.state.id}_${this.props.children.props.ind}`}
+                key={`${this.state.id}_${this.props.children.props.ind}`}
                 // role={this.state.role}
                 aria-haspopup={this.state.aria_haspopup}
                 aria-hidden={this.state.aria_hidden}

@@ -6,57 +6,60 @@ import { isEmpty } from '../../../functions/isEmpty';
 
 class Form extends Component {
 
-    constructor() {
-        super();
-        this.state = {
-            id: '',
-            class: '',
-            role: '',
-            aria_labelledby: '',
-        };
-    }
+	constructor() {
+		super();
+		this.state = {
+			id: '',
+			class: '',
+			role: '',
+			aria_labelledby: '',
+		};
+	}
 
-    componentWillUpdate(nextProps, nextState) {
-        !isEmpty(nextProps.ontology)
-            ? this.props.fetchMetadata('form')
-            : null;
-    }
+	componentWillUpdate(nextProps, nextState) {
+		!isEmpty(nextProps.ontology)
+			? this.props.fetchMetadata('form')
+			: null;
+	}
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.form) {
-            this.setState({
-                id: `${nextProps.form["elements:id"]}`,
-                class: `${nextProps.form["elements:class"]}`,
-                role: nextProps.form["elements:role"],
-                aria_labelledby: nextProps.form["elements:aria-labelledby"],
-            });
-        }
-    }
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.form) {
+			this.setState({
+				id: nextProps.form["elements:id"],
+				class: nextProps.form["elements:class"],
+				role: nextProps.form["elements:role"],
+				aria_labelledby: nextProps.form["elements:aria-labelledby"],
+			});
+		}
+	}
 
-    render() {
-        return (
-            <form
-                className={this.state.class}
-                id={this.state.id}
-                role={this.state.role}
-                aria-labelledby=""
-            >
-                {this.props.children}
-            </form>
-        );
-    }
+	render() {
+		return (
+			<React.Fragment>
+				<label id={this.state.aria_labelledby} className='hidden' htmlFor="form" aria-hidden='true'>Formulario de búesqueda</label>
+				<form
+					className={this.state.class}
+					id={this.state.id}
+					role={this.state.role}
+					aria-labelledby={this.state.aria_labelledby}
+				>
+					{this.props.children}
+				</form>
+			</React.Fragment>
+		);
+	}
 }
 
 const mapStateToProps = state => ({
-    ontology: state.ontologyReducer.ontology,
-    form: state.ontologyReducer.form,
+	ontology: state.ontologyReducer.ontology,
+	form: state.ontologyReducer.form,
 });
 
 const mapDispatchToProps = dispatch => ({
-    fetchMetadata: (id) => dispatch(fetchMetadata(id)),
+	fetchMetadata: (id) => dispatch(fetchMetadata(id)),
 });
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps,
+	mapStateToProps,
+	mapDispatchToProps,
 )(Form);

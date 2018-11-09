@@ -6,59 +6,61 @@ import { isEmpty } from '../../../functions/isEmpty';
 
 class Button extends Component {
 
-    constructor() {
-        super();
-        this.state = {
-            id: '',
-            class: '',
-            placeholder: '',
-            type: '',
-            aria_describedby: '',
-        };
-    }
+	constructor() {
+		super();
+		this.state = {
+			id: '',
+			class: '',
+			placeholder: '',
+			type: '',
+			aria_describedby: '',
+		};
+	}
 
-    componentWillUpdate(nextProps, nextState) {
-        !isEmpty(nextProps.ontology)
-            ? this.props.fetchMetadata('button')
-            : null;
-    }
+	componentWillUpdate(nextProps, nextState) {
+		!isEmpty(nextProps.ontology)
+			? this.props.fetchMetadata('button')
+			: null;
+	}
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.button) {
-            this.setState({
-                id: `${nextProps.button["elements:id"]}`,
-                class: `${nextProps.button["elements:class"]}`,
-                placeholder: nextProps.button["elements:placeholder"],
-                type: nextProps.button["elements:type"],
-                aria_describedby: nextProps.button["aria-describedby"],
-            });
-        }
-    }
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.button) {
+			this.setState({
+				id: `${nextProps.button["elements:id"]}`,
+				class: `${nextProps.button["elements:class"]}`,
+				placeholder: nextProps.button["elements:placeholder"],
+				type: nextProps.button["elements:type"],
+				aria_describedby: nextProps.button["aria-describedby"],
+			});
+		}
+	}
 
-    render() {
-        return (
-            <input
-                className={this.state.class}
-                id={this.state.id}
-                type={this.state.type}
-                aria_describedby={this.state.aria_describedby}
-                value={this.props.value}
-            >
-            </input>
-        );
-    }
+	render() {
+		return (
+			<React.Fragment>
+				<label id={this.state.aria_labelledby} className='hidden' htmlFor="button" aria-hidden='true'>Botón para buscar</label>
+				<input
+					className={this.state.class}
+					id={this.state.id}
+					type={this.state.type}
+					aria_describedby={this.state.aria_describedby}
+					value={this.props.value}
+				/>
+			</React.Fragment>
+		);
+	}
 }
 
 const mapStateToProps = state => ({
-    ontology: state.ontologyReducer.ontology,
-    button: state.ontologyReducer.button,
+	ontology: state.ontologyReducer.ontology,
+	button: state.ontologyReducer.button,
 });
 
 const mapDispatchToProps = dispatch => ({
-    fetchMetadata: (id) => dispatch(fetchMetadata(id)),
+	fetchMetadata: (id) => dispatch(fetchMetadata(id)),
 });
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps,
+	mapStateToProps,
+	mapDispatchToProps,
 )(Button);
