@@ -23,8 +23,8 @@ class Article extends Component {
     componentWillReceiveProps(nextProps) {
         if (nextProps.article) {
             this.setState({
-                id: `${nextProps.article["elements:id"]}`,
-                class: `${nextProps.article["elements:class"]}`,
+                id: nextProps.article["elements:id"],
+                class: nextProps.article["elements:class"],
                 role: nextProps.article["elements:role"],
             });
         }
@@ -34,8 +34,8 @@ class Article extends Component {
         return (
             <article
                 className={this.state.class}
-                id={this.state.id}
-                role={this.state.role}
+                id={`${this.state.id}_${this.props.ind}`}
+                // role={this.state.role}
                 tabIndex={this.props.tabIndex}
             >
                 {this.props.children}

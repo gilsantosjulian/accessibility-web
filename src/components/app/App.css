@@ -47,7 +47,7 @@ h3 {
 p, li {
   font-size: 1.6rem;
   line-height: 1.5;
-  text-align: justify;
+  /* text-align: justify; */
 }
 
 /* || header layout */
@@ -59,4 +59,10 @@ nav, article, aside, footer {
 
 article img {
   text-align: center;
+}
+
+.hidden {
+  color: #ffffff;
+  z-index: -1;
+  position: absolute;
 }

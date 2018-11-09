@@ -36,7 +36,7 @@ class Footer extends Component {
 			<footer
 				className={this.state.class}
 				id={this.state.id}
-				role={this.state.role}
+				// role={this.state.role}
 				tabIndex={this.props.tabIndex}
 			>
 				{this.props.children}

@@ -35,7 +35,7 @@ class Img extends Component {
             <img
                 className={this.state.class}
                 id={this.state.id}
-                role={this.state.role}
+                // role={this.state.role}
                 alt={this.props.alt}
                 src={this.props.src}
             >

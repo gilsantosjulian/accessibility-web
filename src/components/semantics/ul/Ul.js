@@ -26,8 +26,8 @@ class Ul extends Component {
     componentWillReceiveProps(nextProps) {
         if (nextProps.ul) {
             this.setState({
-                id: `${nextProps.ul["elements:id"]}`,
-                class: `${nextProps.ul["elements:class"]}`,
+                id: nextProps.ul["elements:id"],
+                class: nextProps.ul["elements:class"],
                 role: nextProps.ul["elements:role"],
                 ariaLabel: nextProps.ul["aria-label"],
                 aria_expanded: nextProps.ul["elements:aria-expanded"][0]['_'],
@@ -40,7 +40,7 @@ class Ul extends Component {
         return (
             <ul
                 className={this.state.class}
-                id={this.state.id}
+                id={`${this.state.id}_${this.props.ind}`}
                 // role={this.state.role}
                 aria-expanded={this.state.aria_expanded}
                 aria-hidden={this.state.aria_hidden}
